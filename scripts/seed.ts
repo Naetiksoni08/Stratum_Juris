@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 import { Lead } from "../lib/models/Lead";
 import { DeletedLead } from "../lib/models/DeletedLead";
 
-const MONGODB_URI = "mongodb+srv://naetiksoniDB:Naetiksoni123@cluster0.bw7s4b6.mongodb.net/stratumjuris?appName=Cluster0";
 
 const sampleLeads = [
   { name: "Arjun Mehta", email: "arjun.mehta@gmail.com", phone: "9876543210", message: "I have a commercial dispute with a business partner regarding breach of contract. Need urgent legal advice.", source: "Commercial Dispute", tags: ["Commercial Dispute"], status: "pending", enquiryDate: "15 Apr 2026", starred: false },
@@ -16,7 +15,12 @@ const sampleLeads = [
 ];
 
 async function seed() {
-  await mongoose.connect(MONGODB_URI);
+  const mongoUri = process.env.MONGODB_URI;
+  if (!mongoUri) {
+    throw new Error("Missing MONGODB_URI");
+  }
+
+  await mongoose.connect(mongoUri);
   console.log("Connected to MongoDB — stratumjuris");
 
   // Clear existing

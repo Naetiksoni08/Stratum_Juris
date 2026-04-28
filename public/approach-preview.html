@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Approach Section — Layout Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #eee; }
+
+  /* Shared */
+  .gold { color: #B8973A; }
+  .navy { color: #0B1929; }
+  .muted { color: #7A7670; }
+  .serif { font-family: 'Cormorant Garamond', serif; }
+  .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #B8973A; margin-bottom: 10px; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 600; color: #0B1929; margin-bottom: 12px; line-height: 1.15; }
+  .divider { width: 40px; height: 1px; background: #B8973A; margin-bottom: 16px; }
+  .body-text { font-size: 13px; color: #7A7670; line-height: 1.7; margin-bottom: 24px; }
+  .link { font-size: 12px; color: #0B1929; text-decoration: none; border-bottom: 1px solid #C8CDD8; padding-bottom: 2px; }
+
+  .section { padding: 72px 60px; margin-bottom: 40px; }
+  .label { font-size: 20px; color: #0B1929; font-family: 'Cormorant Garamond', serif; font-weight: 600; margin-bottom: 8px; }
+  .desc { font-size: 12px; color: #7A7670; line-height: 1.7; }
+  .num { font-size: 10px; letter-spacing: 0.2em; color: #B8973A; margin-bottom: 12px; display: block; }
+  .tag { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #888; margin-bottom: 40px; font-family: 'Inter', sans-serif; border-bottom: 2px solid #B8973A; display: inline-block; padding-bottom: 6px; }
+
+  .left { width: 38%; }
+  .right { width: 58%; }
+  .two-col { display: flex; gap: 60px; align-items: flex-start; }
+
+  /* ── OPTION A: 4 horizontal tiles in a row ── */
+  .a-bg { background: linear-gradient(to bottom, #D4DAE8 0%, #1a2a3a 100%); }
+  .a-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid #C8CDD8; }
+  .a-tile { padding: 32px 24px; border-right: 1px solid #C8CDD8; background: #F4F5F8; transition: background 0.3s; }
+  .a-tile:last-child { border-right: none; }
+  .a-tile:hover { background: #fff; }
+  .a-tile:hover .a-label { color: #B8973A; }
+  .a-bar { width: 24px; height: 1px; background: #B8973A; margin: 10px 0 14px; transition: width 0.3s; }
+  .a-tile:hover .a-bar { width: 48px; }
+  .a-label { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: #0B1929; transition: color 0.3s; }
+
+  /* ── OPTION B: Big background numbers ── */
+  .b-bg { background: linear-gradient(to bottom, #D4DAE8 0%, #1a2a3a 100%); }
+  .b-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: #C8CDD8; }
+  .b-card { background: #F4F5F8; padding: 40px 36px; position: relative; overflow: hidden; }
+  .b-bignum { position: absolute; top: -10px; right: 16px; font-family: 'Cormorant Garamond', serif; font-size: 120px; font-weight: 600; color: #0B1929; opacity: 0.04; line-height: 1; pointer-events: none; }
+  .b-card:hover { background: #fff; }
+  .b-label { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: #0B1929; margin-bottom: 10px; }
+  .b-card:hover .b-label { color: #B8973A; }
+
+  /* ── OPTION C: Timeline / horizontal stepper ── */
+  .c-bg { background: linear-gradient(to bottom, #D4DAE8 0%, #1a2a3a 100%); }
+  .c-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 48px; position: relative; }
+  .c-steps::before { content: ''; position: absolute; top: 20px; left: 10%; right: 10%; height: 1px; background: #B8973A; opacity: 0.4; }
+  .c-step { padding: 0 16px; text-align: center; }
+  .c-dot { width: 40px; height: 40px; border: 1px solid #B8973A; background: #F4F5F8; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 10px; color: #B8973A; letter-spacing: 0.1em; transition: background 0.3s; }
+  .c-step:hover .c-dot { background: #B8973A; color: #fff; }
+  .c-step:hover .c-label { color: #B8973A; }
+  .c-label { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: #0B1929; margin-bottom: 10px; transition: color 0.3s; }
+
+  /* ── OPTION D: Dark cards on dark bg ── */
+  .d-bg { background: linear-gradient(to bottom, #D4DAE8 0%, #1a2a3a 100%); }
+  .d-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .d-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 36px 32px; transition: all 0.3s; cursor: default; }
+  .d-card:hover { background: rgba(184,151,58,0.12); border-color: rgba(184,151,58,0.35); }
+  .d-num { font-size: 10px; letter-spacing: 0.2em; color: #B8973A; margin-bottom: 12px; display: block; }
+  .d-label { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: #fff; margin-bottom: 10px; }
+  .d-bar { width: 24px; height: 1px; background: #B8973A; margin-bottom: 14px; transition: width 0.3s; }
+  .d-card:hover .d-bar { width: 48px; }
+  .d-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+  .d-left .body-text { color: rgba(255,255,255,0.6); }
+  .d-left .section-title { color: #fff; }
+  .d-left .link { color: #B8973A; border-color: rgba(184,151,58,0.4); }
+
+  /* ── OPTION E: Accordion rows (full width) ── */
+  .e-bg { background: linear-gradient(to bottom, #D4DAE8 0%, #1a2a3a 100%); }
+  .e-rows { border-top: 1px solid #C8CDD8; margin-top: 40px; }
+  .e-row { display: flex; align-items: flex-start; gap: 40px; padding: 28px 0; border-bottom: 1px solid #C8CDD8; cursor: default; transition: background 0.2s; }
+  .e-row:hover { padding-left: 12px; }
+  .e-row:hover .e-label { color: #B8973A; }
+  .e-num2 { font-size: 10px; letter-spacing: 0.2em; color: #B8973A; min-width: 28px; padding-top: 4px; }
+  .e-label { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: #0B1929; min-width: 140px; transition: color 0.3s; }
+  .e-desc2 { font-size: 12px; color: #7A7670; line-height: 1.7; flex: 1; padding-top: 6px; }
+</style>
+</head>
+<body>
+
+<!-- ─────────── OPTION A: 4 horizontal tiles ─────────── -->
+<div class="section a-bg">
+  <div class="tag">Option A — 4 Horizontal Tiles</div>
+  <div class="two-col">
+    <div class="left">
+      <p class="eyebrow">Approach</p>
+      <h2 class="section-title">Clarity from the Outset</h2>
+      <div class="divider"></div>
+      <p class="body-text">At Stratum Juris, briefs are taken forward with clarity, structure and a defined objective from the outset. The focus remains on understanding the client's position, identifying leverage early and driving proceedings with consistency and control.</p>
+      <a href="#" class="link">Learn More About Our Approach →</a>
+    </div>
+    <div class="right">
+      <div class="a-tiles">
+        <div class="a-tile">
+          <span class="num">01</span>
+          <div class="a-label">Evaluate</div>
+          <div class="a-bar"></div>
+          <p class="desc">A clear assessment of facts, legal position, risk and desired outcome defines the direction from the very beginning.</p>
+        </div>
+        <div class="a-tile">
+          <span class="num">02</span>
+          <div class="a-label">Define</div>
+          <div class="a-bar"></div>
+          <p class="desc">Strategy is structured with precision, setting a clear course of action aligned with the client's objectives.</p>
+        </div>
+        <div class="a-tile">
+          <span class="num">03</span>
+          <div class="a-label">Pursue</div>
+          <div class="a-bar"></div>
+          <p class="desc">Proceedings are driven with discipline and consistency, ensuring momentum is maintained at every stage.</p>
+        </div>
+        <div class="a-tile">
+          <span class="num">04</span>
+          <div class="a-label">Resolve</div>
+          <div class="a-bar"></div>
+          <p class="desc">Focus remains on securing outcomes that are effective, enforceable and aligned with the client's interests.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── OPTION B: Big ghost numbers ─────────── -->
+<div class="section b-bg">
+  <div class="tag">Option B — Ghost Number Background</div>
+  <div class="two-col">
+    <div class="left">
+      <p class="eyebrow">Approach</p>
+      <h2 class="section-title">Clarity from the Outset</h2>
+      <div class="divider"></div>
+      <p class="body-text">At Stratum Juris, briefs are taken forward with clarity, structure and a defined objective from the outset. The focus remains on understanding the client's position, identifying leverage early and driving proceedings with consistency and control.</p>
+      <a href="#" class="link">Learn More About Our Approach →</a>
+    </div>
+    <div class="right">
+      <div class="b-grid">
+        <div class="b-card">
+          <div class="b-bignum">1</div>
+          <span class="num">01</span>
+          <div class="b-label">Evaluate</div>
+          <div class="divider"></div>
+          <p class="desc">A clear assessment of facts, legal position, risk and desired outcome defines the direction from the very beginning.</p>
+        </div>
+        <div class="b-card">
+          <div class="b-bignum">2</div>
+          <span class="num">02</span>
+          <div class="b-label">Define</div>
+          <div class="divider"></div>
+          <p class="desc">Strategy is structured with precision, setting a clear course of action aligned with the client's objectives and the realities of the dispute.</p>
+        </div>
+        <div class="b-card">
+          <div class="b-bignum">3</div>
+          <span class="num">03</span>
+          <div class="b-label">Pursue</div>
+          <div class="divider"></div>
+          <p class="desc">Proceedings are driven with discipline and consistency, ensuring that momentum is maintained and positioning remains strong at every stage.</p>
+        </div>
+        <div class="b-card">
+          <div class="b-bignum">4</div>
+          <span class="num">04</span>
+          <div class="b-label">Resolve</div>
+          <div class="divider"></div>
+          <p class="desc">Focus remains on securing outcomes that are effective, enforceable and aligned with the client's interests.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── OPTION C: Timeline stepper ─────────── -->
+<div class="section c-bg">
+  <div class="tag">Option C — Timeline / Stepper</div>
+  <p class="eyebrow">Approach</p>
+  <h2 class="section-title">Clarity from the Outset</h2>
+  <div class="divider"></div>
+  <p class="body-text" style="max-width:600px">At Stratum Juris, briefs are taken forward with clarity, structure and a defined objective from the outset. The focus remains on understanding the client's position, identifying leverage early and driving proceedings with consistency and control.</p>
+  <div class="c-steps">
+    <div class="c-step">
+      <div class="c-dot">01</div>
+      <div class="c-label">Evaluate</div>
+      <p class="desc">A clear assessment of facts, legal position, risk and desired outcome defines direction from the very beginning.</p>
+    </div>
+    <div class="c-step">
+      <div class="c-dot">02</div>
+      <div class="c-label">Define</div>
+      <p class="desc">Strategy is structured with precision, setting a clear course of action aligned with the client's objectives.</p>
+    </div>
+    <div class="c-step">
+      <div class="c-dot">03</div>
+      <div class="c-label">Pursue</div>
+      <p class="desc">Proceedings are driven with discipline and consistency, ensuring momentum remains strong at every stage.</p>
+    </div>
+    <div class="c-step">
+      <div class="c-dot">04</div>
+      <div class="c-label">Resolve</div>
+      <p class="desc">Focus remains on securing outcomes that are effective, enforceable and aligned with the client's interests.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── OPTION D: Dark cards on dark section ─────────── -->
+<div class="section d-bg" style="padding-top: 100px;">
+  <div class="tag" style="color:#B8973A; border-color:#B8973A;">Option D — Dark Cards (bottom of gradient)</div>
+  <div class="two-col" style="margin-top:32px">
+    <div class="left d-left">
+      <p class="eyebrow">Approach</p>
+      <h2 class="section-title" style="color:#fff">Clarity from the Outset</h2>
+      <div class="divider"></div>
+      <p class="body-text" style="color:rgba(255,255,255,0.55)">At Stratum Juris, briefs are taken forward with clarity, structure and a defined objective from the outset. The focus remains on understanding the client's position, identifying leverage early and driving proceedings with consistency and control.</p>
+      <a href="#" class="link" style="color:#B8973A; border-color:rgba(184,151,58,0.4)">Learn More About Our Approach →</a>
+    </div>
+    <div class="right">
+      <div class="d-grid">
+        <div class="d-card">
+          <span class="d-num">01</span>
+          <div class="d-label">Evaluate</div>
+          <div class="d-bar"></div>
+          <p class="d-desc">A clear assessment of facts, legal position, risk and desired outcome defines the direction from the very beginning.</p>
+        </div>
+        <div class="d-card">
+          <span class="d-num">02</span>
+          <div class="d-label">Define</div>
+          <div class="d-bar"></div>
+          <p class="d-desc">Strategy is structured with precision, setting a clear course of action aligned with the client's objectives and the realities of the dispute.</p>
+        </div>
+        <div class="d-card">
+          <span class="d-num">03</span>
+          <div class="d-label">Pursue</div>
+          <div class="d-bar"></div>
+          <p class="d-desc">Proceedings are driven with discipline and consistency, ensuring that momentum is maintained and positioning remains strong at every stage.</p>
+        </div>
+        <div class="d-card">
+          <span class="d-num">04</span>
+          <div class="d-label">Resolve</div>
+          <div class="d-bar"></div>
+          <p class="d-desc">Focus remains on securing outcomes that are effective, enforceable and aligned with the client's interests.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── OPTION E: Full-width rows ─────────── -->
+<div class="section e-bg">
+  <div class="tag">Option E — Full-Width Rows</div>
+  <div class="two-col" style="margin-bottom:0">
+    <div style="width:100%">
+      <p class="eyebrow">Approach</p>
+      <h2 class="section-title">Clarity from the Outset</h2>
+      <div class="divider"></div>
+      <p class="body-text" style="max-width:560px">At Stratum Juris, briefs are taken forward with clarity, structure and a defined objective from the outset. The focus remains on understanding the client's position, identifying leverage early and driving proceedings with consistency and control.</p>
+      <div class="e-rows">
+        <div class="e-row">
+          <span class="e-num2">01</span>
+          <div class="e-label">Evaluate</div>
+          <p class="e-desc2">A clear assessment of facts, legal position, risk and desired outcome defines the direction from the very beginning.</p>
+        </div>
+        <div class="e-row">
+          <span class="e-num2">02</span>
+          <div class="e-label">Define</div>
+          <p class="e-desc2">Strategy is structured with precision, setting a clear course of action aligned with the client's objectives and the realities of the dispute.</p>
+        </div>
+        <div class="e-row">
+          <span class="e-num2">03</span>
+          <div class="e-label">Pursue</div>
+          <p class="e-desc2">Proceedings are driven with discipline and consistency, ensuring that momentum is maintained and positioning remains strong at every stage.</p>
+        </div>
+        <div class="e-row">
+          <span class="e-num2">04</span>
+          <div class="e-label">Resolve</div>
+          <p class="e-desc2">Focus remains on securing outcomes that are effective, enforceable and aligned with the client's interests.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stratum Juris — Design Direction Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Lato:wght@300;400;700&family=Space+Grotesk:wght@300;400;500&family=Outfit:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #1a1a1a; font-family: 'DM Sans', sans-serif; }
+
+  h1.page-title {
+    text-align: center;
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    padding: 3rem 2rem 1rem;
+    letter-spacing: 0.05em;
+  }
+  p.page-sub {
+    text-align: center;
+    color: #888;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    padding-bottom: 3rem;
+    letter-spacing: 0.05em;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-width: 1400px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+  }
+
+  /* ─── OPTION A: Dark Editorial ─── */
+  .option-a {
+    background: #0C0C0C;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .option-a .label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 2.5rem;
+  }
+  .option-a .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5rem;
+    border-bottom: 1px solid #1f1f1f;
+    padding-bottom: 1.25rem;
+  }
+  .option-a .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #E8E4DC;
+    letter-spacing: 0.1em;
+  }
+  .option-a .logo span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: #555;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  .option-a .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #555;
+  }
+  .option-a .nav-links li.active { color: #E8E4DC; }
+  .option-a .contact-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #0C0C0C;
+    background: #E8E4DC;
+    padding: 0.5rem 1rem;
+  }
+  .option-a .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 1.25rem;
+  }
+  .option-a h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 1.05;
+    color: #F0EDE8;
+    margin-bottom: 1.5rem;
+  }
+  .option-a h2 em {
+    font-style: italic;
+    color: #E8E4DC;
+    opacity: 0.6;
+  }
+  .option-a p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: #6B6762;
+    max-width: 380px;
+    margin-bottom: 2.5rem;
+  }
+  .option-a .btn {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #F0EDE8;
+    border: 1px solid #2a2a2a;
+    padding: 0.8rem 2rem;
+  }
+  .option-a .accent-line {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, #E8E4DC40, transparent);
+  }
+  .option-a .swatches {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #1f1f1f;
+  }
+  .swatch {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    position: relative;
+  }
+  .swatch span {
+    position: absolute;
+    bottom: -1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.45rem;
+    white-space: nowrap;
+    color: #555;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .option-a .tag {
+    margin-top: 2.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: #E8E4DC;
+    opacity: 0.4;
+  }
+
+  /* ─── OPTION B: Swiss Minimalist ─── */
+  .option-b {
+    background: #F8F7F4;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .option-b .label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 2.5rem;
+  }
+  .option-b .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5rem;
+    border-bottom: 1px solid #E0DED8;
+    padding-bottom: 1.25rem;
+  }
+  .option-b .logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #111111;
+    letter-spacing: 0.08em;
+  }
+  .option-b .logo span {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  .option-b .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #999;
+  }
+  .option-b .nav-links li.active { color: #111; }
+  .option-b .contact-btn {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #111;
+    padding: 0.5rem 1rem;
+  }
+  .option-b .eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #1A3A2A;
+    margin-bottom: 1.25rem;
+  }
+  .option-b h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1.05;
+    color: #111111;
+    margin-bottom: 1.5rem;
+  }
+  .option-b h2 em {
+    font-style: italic;
+    color: #1A3A2A;
+  }
+  .option-b .rule { width: 40px; height: 1px; background: #111; margin-bottom: 1.5rem; }
+  .option-b p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: #6B6B6B;
+    max-width: 380px;
+    margin-bottom: 2.5rem;
+  }
+  .option-b .btn {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #111;
+    border: 1px solid #111;
+    padding: 0.8rem 2rem;
+  }
+  .option-b .swatches {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #E0DED8;
+  }
+  .option-b .tag {
+    margin-top: 2.5rem;
+    font-family: 'Instrument Serif', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: #1A3A2A;
+    opacity: 0.5;
+  }
+
+  /* ─── OPTION C: Warm Stone & Copper ─── */
+  .option-c {
+    background: #F4F0E8;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .option-c .label {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #A0522D;
+    margin-bottom: 2.5rem;
+  }
+  .option-c .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5rem;
+    border-bottom: 1px solid #DDD5C4;
+    padding-bottom: 1.25rem;
+  }
+  .option-c .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #A0522D;
+    letter-spacing: 0.1em;
+  }
+  .option-c .logo span {
+    display: block;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: #A0522D;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  .option-c .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #9B8E7C;
+  }
+  .option-c .nav-links li.active { color: #1C1410; }
+  .option-c .contact-btn {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #A0522D;
+    padding: 0.5rem 1rem;
+  }
+  .option-c .eyebrow {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #A0522D;
+    margin-bottom: 1.25rem;
+  }
+  .option-c h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 1.05;
+    color: #1C1410;
+    margin-bottom: 1.5rem;
+  }
+  .option-c h2 em {
+    font-style: italic;
+    color: #A0522D;
+  }
+  .option-c .divider { width: 48px; height: 2px; background: linear-gradient(to right, #A0522D, #C0622D); margin-bottom: 1.5rem; }
+  .option-c p {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: #6B5B4E;
+    max-width: 380px;
+    margin-bottom: 2.5rem;
+  }
+  .option-c .btn {
+    display: inline-block;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #A0522D;
+    padding: 0.8rem 2rem;
+  }
+  .option-c .accent-line {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, #A0522D80, transparent);
+  }
+  .option-c .swatches {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #DDD5C4;
+  }
+  .option-c .tag {
+    margin-top: 2.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: #A0522D;
+    opacity: 0.5;
+  }
+
+  /* ─── OPTION D: Slate & Teal ─── */
+  .option-d {
+    background: #F6F7F8;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .option-d .label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #2A7A6F;
+    margin-bottom: 2.5rem;
+  }
+  .option-d .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5rem;
+    border-bottom: 1px solid #DDE1E5;
+    padding-bottom: 1.25rem;
+  }
+  .option-d .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1E2530;
+    letter-spacing: 0.05em;
+  }
+  .option-d .logo span {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: #2A7A6F;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  .option-d .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #8A96A4;
+  }
+  .option-d .nav-links li.active { color: #1E2530; }
+  .option-d .contact-btn {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #2A7A6F;
+    padding: 0.5rem 1rem;
+  }
+  .option-d .eyebrow {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #2A7A6F;
+    margin-bottom: 1.25rem;
+  }
+  .option-d h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 1.05;
+    color: #1E2530;
+    margin-bottom: 1.5rem;
+  }
+  .option-d h2 em {
+    font-style: italic;
+    color: #2A7A6F;
+  }
+  .option-d .divider { width: 48px; height: 2px; background: linear-gradient(to right, #2A7A6F, #3A9A8F); margin-bottom: 1.5rem; }
+  .option-d p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: #5A6472;
+    max-width: 380px;
+    margin-bottom: 2.5rem;
+  }
+  .option-d .btn {
+    display: inline-block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #2A7A6F;
+    padding: 0.8rem 2rem;
+  }
+  .option-d .swatches {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #DDE1E5;
+  }
+  .option-d .tag {
+    margin-top: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: #2A7A6F;
+    opacity: 0.5;
+  }
+</style>
+</head>
+<body>
+
+<h1 class="page-title">Stratum Juris — Design Direction Preview</h1>
+<p class="page-sub">PICK YOUR DIRECTION · TELL NAETIK WHICH ONE</p>
+
+<div class="grid">
+
+  <!-- OPTION A -->
+  <div class="option-a">
+    <div class="accent-line"></div>
+    <div class="label">Option A — Dark Editorial / Ink &amp; Stone</div>
+    <nav class="nav">
+      <div class="logo">STRATUM JURIS<span>Advocates &amp; Solicitors</span></div>
+      <ul class="nav-links">
+        <li class="active">Home</li><li>About Us</li><li>Our Team</li><li>Expertise</li>
+      </ul>
+      <div class="contact-btn">Contact Us</div>
+    </nav>
+    <div class="eyebrow">New Delhi · Est. 2024</div>
+    <h2>Clarity in<br>Strategy. <em>Strength</em><br>in Execution.</h2>
+    <p>From the first consultation to final adjudication, each matter is approached with clarity, structure and strategic intent across civil, criminal and financial disputes.</p>
+    <div class="btn">Request a Consultation</div>
+    <div class="swatches">
+      <div class="swatch" style="background:#0C0C0C;border:1px solid #333"><span>#0C0C0C</span></div>
+      <div class="swatch" style="background:#141414;border:1px solid #333"><span>#141414</span></div>
+      <div class="swatch" style="background:#E8E4DC"><span>#E8E4DC</span></div>
+      <div class="swatch" style="background:#F0EDE8"><span>#F0EDE8</span></div>
+      <div class="swatch" style="background:#6B6762"><span>#6B6762</span></div>
+    </div>
+    <div class="tag">Dark. Editorial. Cinematic.</div>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="option-b">
+    <div class="label">Option B — Swiss Minimalist / Bone White</div>
+    <nav class="nav">
+      <div class="logo">STRATUM JURIS<span>Advocates &amp; Solicitors</span></div>
+      <ul class="nav-links">
+        <li class="active">Home</li><li>About Us</li><li>Our Team</li><li>Expertise</li>
+      </ul>
+      <div class="contact-btn">Contact Us</div>
+    </nav>
+    <div class="eyebrow">New Delhi · Est. 2024</div>
+    <h2>Clarity in<br>Strategy. <em>Strength</em><br>in Execution.</h2>
+    <div class="rule"></div>
+    <p>From the first consultation to final adjudication, each matter is approached with clarity, structure and strategic intent across civil, criminal and financial disputes.</p>
+    <div class="btn">Request a Consultation</div>
+    <div class="swatches">
+      <div class="swatch" style="background:#F8F7F4;border:1px solid #ccc"><span>#F8F7F4</span></div>
+      <div class="swatch" style="background:#111111"><span>#111111</span></div>
+      <div class="swatch" style="background:#1A3A2A"><span>#1A3A2A</span></div>
+      <div class="swatch" style="background:#6B6B6B"><span>#6B6B6B</span></div>
+    </div>
+    <div class="tag">Cold. Precise. Architectural.</div>
+  </div>
+
+  <!-- OPTION C -->
+  <div class="option-c">
+    <div class="accent-line"></div>
+    <div class="label">Option C — Warm Stone &amp; Copper</div>
+    <nav class="nav">
+      <div class="logo">STRATUM JURIS<span>Advocates &amp; Solicitors</span></div>
+      <ul class="nav-links">
+        <li class="active">Home</li><li>About Us</li><li>Our Team</li><li>Expertise</li>
+      </ul>
+      <div class="contact-btn">Contact Us</div>
+    </nav>
+    <div class="eyebrow">New Delhi · Est. 2024</div>
+    <h2>Clarity in<br>Strategy. <em>Strength</em><br>in Execution.</h2>
+    <div class="divider"></div>
+    <p>From the first consultation to final adjudication, each matter is approached with clarity, structure and strategic intent across civil, criminal and financial disputes.</p>
+    <div class="btn">Request a Consultation</div>
+    <div class="swatches">
+      <div class="swatch" style="background:#F4F0E8;border:1px solid #ccc"><span>#F4F0E8</span></div>
+      <div class="swatch" style="background:#1C1410"><span>#1C1410</span></div>
+      <div class="swatch" style="background:#A0522D"><span>#A0522D</span></div>
+      <div class="swatch" style="background:#C0622D"><span>#C0622D</span></div>
+      <div class="swatch" style="background:#6B5B4E"><span>#6B5B4E</span></div>
+    </div>
+    <div class="tag">Rooted. Warm. Authoritative.</div>
+  </div>
+
+  <!-- OPTION D -->
+  <div class="option-d">
+    <div class="label">Option D — Slate &amp; Teal / Restrained Luxury</div>
+    <nav class="nav">
+      <div class="logo">STRATUM JURIS<span>Advocates &amp; Solicitors</span></div>
+      <ul class="nav-links">
+        <li class="active">Home</li><li>About Us</li><li>Our Team</li><li>Expertise</li>
+      </ul>
+      <div class="contact-btn">Contact Us</div>
+    </nav>
+    <div class="eyebrow">New Delhi · Est. 2024</div>
+    <h2>Clarity in<br>Strategy. <em>Strength</em><br>in Execution.</h2>
+    <div class="divider"></div>
+    <p>From the first consultation to final adjudication, each matter is approached with clarity, structure and strategic intent across civil, criminal and financial disputes.</p>
+    <div class="btn">Request a Consultation</div>
+    <div class="swatches">
+      <div class="swatch" style="background:#F6F7F8;border:1px solid #ccc"><span>#F6F7F8</span></div>
+      <div class="swatch" style="background:#1E2530"><span>#1E2530</span></div>
+      <div class="swatch" style="background:#2A7A6F"><span>#2A7A6F</span></div>
+      <div class="swatch" style="background:#5A6472"><span>#5A6472</span></div>
+    </div>
+    <div class="tag">Global. Cool. Restrained.</div>
+  </div>
+
+</div>
+</body>
+</html>

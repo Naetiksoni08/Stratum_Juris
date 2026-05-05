@@ -7,6 +7,7 @@ export interface TeamMember {
   id: string;
   name: string;
   role: string;
+  tagline?: string;
   bio: string;
   sections?: TeamSection[];
   image: string;
@@ -81,6 +82,7 @@ export const teamMembers: TeamMember[] = [
     id: "ravi-prakash-verma",
     name: "Ravi Prakash Verma",
     role: "Head of Compliance & Advisory",
+    tagline: "Advocate, Bar Council of India",
     bio: "Ravi Prakash Verma brings over two decades of experience in regulatory, tax and commercial advisory, having built and led an established practice over the past 25 years advising businesses, institutions and individuals on complex legal and financial matters.\n\nOver the course of his practice, he has been engaged in navigating intricate regulatory frameworks, structuring transactions and managing tax and compliance exposure across sectors. His work has consistently involved matters requiring careful calibration of legal, financial and operational considerations, including direct and indirect taxation, corporate structuring, business setup and regulatory positioning.\n\nAt Stratum Juris, he serves in a strategic advisory capacity on matters involving regulatory, financial and commercial complexity — particularly where litigation intersects with tax, compliance or business structuring considerations. His involvement brings a layer of experience that informs decision-making at critical stages of disputes.",
     sections: [
       {
@@ -140,7 +142,7 @@ export const teamMembers: TeamMember[] = [
           "Himanshu serves as a Senior Associate in the criminal litigation team at Stratum Juris, contributing to case strategy, drafting, trial preparation and court appearances. His role involves supporting the firm's approach of structured criminal defence, ensuring consistency in position and effective execution across stages of proceedings.",
       },
     ],
-    image: "",
+    image: "/team/himanshu.jpeg",
     email: "contact@stratumjuris.com",
     specialization: ["Criminal Defence", "Trial Defence", "Bail Strategy", "White-Collar Investigations", "CBI & ED Matters"],
     education: [],

@@ -57,6 +57,9 @@ export function TeamContent() {
       <section className="py-20 lg:py-28 bg-background">
         <div className="max-w-6xl mx-auto px-6 lg:px-8 space-y-20">
 
+
+
+
           {/* Founder Featured Card */}
           {(() => {
             const founder = teamMembers.find((m) => m.id === "founder");
@@ -67,10 +70,10 @@ export function TeamContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="flex flex-col sm:flex-row gap-0 border border-border"
+                className="group flex flex-col sm:flex-row gap-0 border border-border cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               >
                 {/* Image */}
-                <div className="relative flex-shrink-0 w-full sm:w-[260px]" style={{ minHeight: "300px", backgroundColor: "#E8E2D9" }}>
+                <div className="relative w-full sm:w-[300px] lg:w-[380px] flex-shrink-0" style={{ aspectRatio: "1/1.2", backgroundColor: "#E8E2D9" }}>
                   {founder.image ? (
                     <Image
                       src={founder.image}
@@ -112,7 +115,7 @@ export function TeamContent() {
           {/* Team Members Grid */}
           <div>
             <p className="font-inter text-xs font-semibold tracking-[0.22em] uppercase mb-8" style={{ color: "#B8973A" }}>
-              Team Members
+              Our People
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {teamMembers.filter((m) => m.id !== "founder").map((member, index) => (
@@ -125,13 +128,13 @@ export function TeamContent() {
                   className="group border border-border"
                 >
                   {/* Image */}
-                  <div className="relative overflow-hidden" style={{ height: "350px", backgroundColor: "#E8E2D9" }}>
+                  <div className="relative w-full overflow-hidden flex-shrink-0" style={{ aspectRatio: "1/1.1", backgroundColor: "#E8E2D9" }}>
                     {member.image ? (
                       <Image
                         src={member.image}
                         alt={member.name}
                         fill
-                        className="object-cover object-top transition-all duration-500"
+                        className="object-cover object-top transition-all duration-500 group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                     ) : (
@@ -140,7 +143,6 @@ export function TeamContent() {
                       </div>
                     )}
                   </div>
-
                   {/* Info */}
                   <div className="px-5 pt-4 pb-5">
                     <h3 className="font-cormorant text-xl font-semibold text-primary-text leading-tight mb-1">
@@ -160,7 +162,6 @@ export function TeamContent() {
               ))}
             </div>
           </div>
-
         </div>
       </section>
       <CTABanner />

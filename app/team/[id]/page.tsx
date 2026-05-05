@@ -15,6 +15,7 @@ function toSlug(title: string) {
 export default function TeamMemberPage({ params }: { params: { id: string } }) {
   const member = teamMembers.find((m) => m.id === params.id);
   if (!member) notFound();
+  const taglineText = member.tagline || member.barEnrollment || "Advocate, Bar Council of India";
 
   const tags = [
     ...(member.bio ? [{ label: "Profile", slug: "profile" }] : []),
@@ -29,8 +30,8 @@ export default function TeamMemberPage({ params }: { params: { id: string } }) {
 
         {/* Image — full width on mobile, 38% on desktop */}
         <div className="w-full sm:w-[38%] flex-shrink-0 relative h-[360px] sm:h-auto sm:min-h-[560px]" style={{ background: "#0f1c2e" }}>
-          {/* Image offset from top */}
-          <div className="absolute inset-x-0 bottom-0" style={{ top: "2rem" }}>
+          {/* Explicit top margin so photo starts lower */}
+          <div className="absolute inset-x-0 bottom-0 top-4 sm:top-6">
             {member.image ? (
               <Image src={member.image} alt={member.name} fill className="object-contain object-bottom" priority />
             ) : (
@@ -65,11 +66,9 @@ export default function TeamMemberPage({ params }: { params: { id: string } }) {
             {member.name}
           </h1>
           <div className="w-12 h-[2px] mb-6 mx-auto sm:mx-0" style={{ background: "#B8973A" }} />
-          {member.barEnrollment && (
-            <p className="font-inter text-sm text-white mb-8" style={{ maxWidth: "380px" }}>
-              {member.barEnrollment}
-            </p>
-          )}
+          <p className="font-inter text-sm text-white mb-8" style={{ maxWidth: "380px" }}>
+            {taglineText}
+          </p>
 
           {/* Section tags */}
           {tags.length > 0 && (
@@ -97,7 +96,10 @@ export default function TeamMemberPage({ params }: { params: { id: string } }) {
           {member.bio && (
             <>
               <div id="profile" className="scroll-mt-24">
-                <p className="font-inter text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-accent-gold">
+                <p
+                  className="font-inter text-xs font-semibold tracking-[0.2em] uppercase mb-3"
+                  style={{ color: "#B8973A" }}
+                >
                   Professional Background
                 </p>
                 <h2 className="font-cormorant text-3xl lg:text-4xl font-semibold text-primary-text mb-6">
@@ -118,7 +120,10 @@ export default function TeamMemberPage({ params }: { params: { id: string } }) {
           {/* Additional sections */}
           {member.sections?.map((section, index) => (
             <div key={section.title} id={toSlug(section.title)} className="scroll-mt-24">
-              <p className="font-inter text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-accent-gold">
+              <p
+                className="font-inter text-xs font-semibold tracking-[0.2em] uppercase mb-3"
+                style={{ color: "#B8973A" }}
+              >
                 {section.title}
               </p>
               <h2 className="font-cormorant text-3xl lg:text-4xl font-semibold text-primary-text mb-6">

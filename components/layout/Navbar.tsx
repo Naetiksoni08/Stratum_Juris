@@ -54,11 +54,10 @@ export function Navbar() {
         <nav className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <Image src="/logo.png" alt="Stratum Juris Logo" width={38} height={38} className="flex-shrink-0" />
-
+            <Link href="/" className="flex items-center group">
+            <Image src="/logo.png" alt="Stratum Juris Logo" width={120} height={120} className="flex-shrink-0 rounded-lg mt-3 -mr-4" />
               <div className="flex flex-col leading-none">
-                <span className="font-cormorant text-xl lg:text-2xl font-bold text-[#B8973A] tracking-tight transition-colors duration-300">
+                <span className="font-cormorant text-xl lg:text-3xl font-bold text-[#B8973A] tracking-tight transition-colors duration-300">
                   STRATUM JURIS
                 </span>
                 <span className="text-[9px] tracking-[0.25em] text-[#B8973A] uppercase font-inter font-extrabold">
@@ -135,7 +134,7 @@ export function Navbar() {
                 transition={{ delay: 0.1 }}
                 className="flex flex-col items-center mb-6 gap-3"
               >
-                <Image src="/logo.png" alt="Stratum Juris Logo" width={48} height={48} />
+              <Image src="/logo.png" alt="Stratum Juris Logo" width={120} height={120} />
                 <div className="text-center">
                   <span className="font-cormorant text-3xl font-bold text-accent-gold">
                     STRATUM JURIS
@@ -159,7 +158,7 @@ export function Navbar() {
                     className={cn(
                       "font-cormorant text-3xl font-semibold transition-colors duration-200",
                       pathname === item.href
-                        ? "text-accent-gold"
+                        ? "text-primary-text"
                         : "text-primary-text hover:text-accent-gold"
                     )}
                   >
@@ -176,7 +175,7 @@ export function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => setMobileOpen(false)}
-                  className="mt-4 px-8 py-3 border border-primary-text text-primary-text font-inter text-sm tracking-widest uppercase hover:bg-primary-text hover:text-white transition-all duration-300"
+                  className="mt-4 px-8 py-3 border border-primary-text text-primary-text rounded-lg font-inter text-sm tracking-widest uppercase hover:bg-[#B8973A] hover:border-[#B8973A] hover:text-white transition-all duration-300"
                 >
                   Contact Us
                 </Link>

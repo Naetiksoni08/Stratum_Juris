@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MapPin, Phone, Mail, Linkedin, Instagram, ArrowUp } from "lucide-react";
+import { MapPin, Phone, Mail, Linkedin, ArrowUp } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 

@@ -57,9 +57,6 @@ export function TeamContent() {
       <section className="py-20 lg:py-28 bg-background">
         <div className="max-w-6xl mx-auto px-6 lg:px-8 space-y-20">
 
-
-
-
           {/* Founder Featured Card */}
           {(() => {
             const founder = teamMembers.find((m) => m.id === "founder");
@@ -70,44 +67,45 @@ export function TeamContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="group flex flex-col sm:flex-row gap-0 border border-border cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               >
-                {/* Image */}
-                <div className="relative w-full sm:w-[300px] lg:w-[380px] flex-shrink-0" style={{ aspectRatio: "1/1.2", backgroundColor: "#E8E2D9" }}>
-                  {founder.image ? (
-                    <Image
-                      src={founder.image}
-                      alt={founder.name}
-                      fill
-                      className="object-cover object-top"
-                      sizes="(max-width: 640px) 100vw, 260px"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <User className="w-16 h-16" style={{ color: "#B8A898" }} />
-                    </div>
-                  )}
-                </div>
+                <Link
+                  href={`/team/${founder.id}`}
+                  className="group flex flex-col sm:flex-row gap-0 border border-border cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all duration-300 block"
+                >
+                  {/* Image */}
+                  <div className="relative w-full sm:w-[300px] lg:w-[380px] flex-shrink-0" style={{ aspectRatio: "1/1.2", backgroundColor: "#E8E2D9" }}>
+                    {founder.image ? (
+                      <Image
+                        src={founder.image}
+                        alt={founder.name}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 640px) 100vw, 260px"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <User className="w-16 h-16" style={{ color: "#B8A898" }} />
+                      </div>
+                    )}
+                  </div>
 
-                {/* Content */}
-                <div className="flex flex-col justify-center px-8 py-8 lg:px-12">
-                  <p className="font-inter text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: "#B8973A" }}>
-                    {founder.role}
-                  </p>
-                  <h2 className="font-cormorant text-4xl lg:text-5xl font-semibold text-primary-text leading-tight mb-4">
-                    {founder.name}
-                  </h2>
-                  <div className="w-10 h-[1.5px] mb-5" style={{ background: "#B8973A" }} />
-                  <p className="font-inter text-sm text-secondary-text leading-relaxed mb-7 max-w-xl">
-                    {founder.bio.split("\n\n")[0]}
-                  </p>
-                  <Link
-                    href={`/team/${founder.id}`}
-                    className="self-start inline-flex items-center gap-2 font-inter text-xs tracking-[0.15em] uppercase border px-5 py-2.5 border-primary-text/30 text-primary-text hover:border-[#B8973A] hover:text-[#B8973A] transition-colors duration-200"
-                  >
-                    View Full Profile →
-                  </Link>
-                </div>
+                  {/* Content */}
+                  <div className="flex flex-col justify-center px-8 py-8 lg:px-12">
+                    <p className="font-inter text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: "#B8973A" }}>
+                      {founder.role}
+                    </p>
+                    <h2 className="font-cormorant text-4xl lg:text-5xl font-semibold text-primary-text leading-tight mb-4">
+                      {founder.name}
+                    </h2>
+                    <div className="w-10 h-[1.5px] mb-5" style={{ background: "#B8973A" }} />
+                    <p className="font-inter text-sm text-secondary-text leading-relaxed mb-7 max-w-xl">
+                      {founder.bio.split("\n\n")[0]}
+                    </p>
+                    <span className="self-start inline-flex items-center gap-2 font-inter text-xs tracking-[0.15em] uppercase border px-5 py-2.5 border-primary-text/30 text-primary-text hover:border-[#B8973A] hover:text-[#B8973A] transition-colors duration-200">
+                      View Full Profile →
+                    </span>
+                  </div>
+                </Link>
               </motion.div>
             );
           })()}
@@ -125,39 +123,37 @@ export function TeamContent() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.08 }}
-                  className="group border border-border"
                 >
-                  {/* Image */}
-                  <div className="relative w-full overflow-hidden flex-shrink-0" style={{ aspectRatio: "1/1.1", backgroundColor: "#E8E2D9" }}>
-                    {member.image ? (
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        className="object-cover object-top transition-all duration-500 group-hover:scale-105"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <User className="w-16 h-16" style={{ color: "#B8A898" }} />
-                      </div>
-                    )}
-                  </div>
-                  {/* Info */}
-                  <div className="px-5 pt-4 pb-5">
-                    <h3 className="font-cormorant text-xl font-semibold text-primary-text leading-tight mb-1">
-                      {member.name}
-                    </h3>
-                    <p className="font-inter text-xs tracking-[0.15em] uppercase mb-4" style={{ color: "#B8973A" }}>
-                      {member.role}
-                    </p>
-                    <Link
-                      href={`/team/${member.id}`}
-                      className="inline-flex items-center gap-1.5 font-inter text-xs tracking-wide uppercase border px-4 py-2 border-primary-text/25 text-primary-text hover:border-[#B8973A] hover:text-[#B8973A] transition-colors duration-200"
-                    >
-                      View Profile →
-                    </Link>
-                  </div>
+                  <Link href={`/team/${member.id}`} className="group border border-border block">
+                    {/* Image */}
+                    <div className="relative w-full overflow-hidden flex-shrink-0" style={{ aspectRatio: "1/1.1", backgroundColor: "#E8E2D9" }}>
+                      {member.image ? (
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          fill
+                          className="object-cover object-top transition-all duration-500 group-hover:scale-105"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <User className="w-16 h-16" style={{ color: "#B8A898" }} />
+                        </div>
+                      )}
+                    </div>
+                    {/* Info */}
+                    <div className="px-5 pt-4 pb-5">
+                      <h3 className="font-cormorant text-xl font-semibold text-primary-text leading-tight mb-1">
+                        {member.name}
+                      </h3>
+                      <p className="font-inter text-xs tracking-[0.15em] uppercase mb-4" style={{ color: "#B8973A" }}>
+                        {member.role}
+                      </p>
+                      <span className="inline-flex items-center gap-1.5 font-inter text-xs tracking-wide uppercase border px-4 py-2 border-primary-text/25 text-primary-text hover:border-[#B8973A] hover:text-[#B8973A] transition-colors duration-200">
+                        View Profile →
+                      </span>
+                    </div>
+                  </Link>
                 </motion.div>
               ))}
             </div>

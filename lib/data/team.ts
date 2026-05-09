@@ -119,7 +119,7 @@ export const teamMembers: TeamMember[] = [
           "Raagansh forms part of the litigation team at Stratum Juris, with a dedicated focus on criminal defence. His role involves drafting, case analysis, briefing and court appearances, supporting the firm's approach of structured litigation and consistent execution.",
       },
     ],
-    image: "",
+    image: "/team/ragansh.png",
     email: "raagansh.kaushik@stratumjuris.com",
     specialization: ["Criminal Defence", "Bail Strategy", "Quashing Petitions", "Discharge Applications", "Trial Defence"],
     education: [],

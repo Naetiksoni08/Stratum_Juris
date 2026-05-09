@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     default: "Stratum Juris | Advocates & Solicitors",
     template: "%s | Stratum Juris",
   },
+  icons: {
+    icon: "/favicon.png",
+  },
   description:
     "Stratum Juris is a premier litigation and dispute resolution firm. Specialising in civil litigation, commercial disputes, arbitration, corporate litigation, consumer law, and criminal defence.",
   keywords: [

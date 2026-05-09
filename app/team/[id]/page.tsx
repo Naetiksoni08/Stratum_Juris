@@ -31,7 +31,7 @@ export default function TeamMemberPage({ params }: { params: { id: string } }) {
         {/* Image — full width on mobile, 38% on desktop */}
         <div className="w-full sm:w-[38%] flex-shrink-0 relative h-[360px] sm:h-auto sm:min-h-[560px]" style={{ background: "#0f1c2e" }}>
           {/* Explicit top margin so photo starts lower */}
-          <div className="absolute inset-x-0 bottom-0 top-4 sm:top-6">
+          <div className="absolute inset-x-0 bottom-0 top-5 sm:top-0">
             {member.image ? (
               <Image src={member.image} alt={member.name} fill className="object-contain object-bottom" priority />
             ) : (
@@ -40,8 +40,7 @@ export default function TeamMemberPage({ params }: { params: { id: string } }) {
               </div>
             )}
           </div>
-          {/* Left/right fade gradient */}
-          <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to right, #0f1c2e 8%, transparent 35%, transparent 65%, #0f1c2e 100%)" }} />
+
           {/* Bottom fade on mobile only */}
           <div className="absolute inset-x-0 bottom-0 h-16 sm:hidden pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent, #0f1c2e)" }} />
           {/* "← Our Team" — mobile only */}
@@ -69,21 +68,6 @@ export default function TeamMemberPage({ params }: { params: { id: string } }) {
           <p className="font-inter text-sm text-white mb-8" style={{ maxWidth: "380px" }}>
             {taglineText}
           </p>
-
-          {/* Section tags */}
-          {tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
-              {tags.map((tag) => (
-                <a
-                  key={tag.slug}
-                  href={`#${tag.slug}`}
-                  className="font-inter text-xs tracking-wide px-3 py-1.5 transition-all duration-200 border border-white/20 text-white/60 hover:border-[#B8973A] hover:text-[#B8973A]"
-                >
-                  {tag.label}
-                </a>
-              ))}
-            </div>
-          )}
         </div>
       </section>
       <div className="border-t border-border" />

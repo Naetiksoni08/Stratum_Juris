@@ -1,10 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import { connectDB } from "@/lib/db";
 import { Lead } from "@/lib/models/Lead";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
 
 const schema = z.object({
   name: z.string().min(2),
@@ -44,10 +52,10 @@ export async function POST(request: NextRequest) {
       status: "pending",
     });
 
-    // ── 2. Notify founder via Resend ────────────────────────────
-    await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL!,
-      to: process.env.RESEND_TO_EMAIL!,
+    // ── 2. Notify founder ───────────────────────────────────────
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM,
+      to: process.env.SMTP_TO,
       subject: `New Inquiry — ${queryType} | ${name}`,
       html: `
         <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; padding: 32px; border: 1px solid #e8e2d9; background: #fdfcfb;">
@@ -55,7 +63,6 @@ export async function POST(request: NextRequest) {
             <h1 style="font-size: 22px; color: #0A1628; margin: 0 0 4px;">New Client Inquiry</h1>
             <p style="font-size: 12px; color: #888; margin: 0; font-family: sans-serif; letter-spacing: 0.1em; text-transform: uppercase;">Stratum Juris — Website</p>
           </div>
-
           <table style="width: 100%; border-collapse: collapse; font-family: sans-serif; font-size: 14px;">
             <tr style="border-bottom: 1px solid #f0ece7;">
               <td style="padding: 10px 0; color: #888; width: 140px;">Name</td>
@@ -78,12 +85,10 @@ export async function POST(request: NextRequest) {
               <td style="padding: 10px 0; color: #0A1628;">${enquiryDate}</td>
             </tr>
           </table>
-
           <div style="margin-top: 24px; background: #f7f4f0; padding: 20px; border-left: 3px solid #B8973A;">
             <p style="font-family: sans-serif; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 8px;">Message</p>
             <p style="font-size: 15px; color: #0A1628; line-height: 1.7; margin: 0;">${description}</p>
           </div>
-
           <p style="font-family: sans-serif; font-size: 12px; color: #aaa; margin-top: 32px; border-top: 1px solid #f0ece7; padding-top: 16px;">
             This inquiry was submitted via the Stratum Juris website contact form.
           </p>
@@ -92,8 +97,8 @@ export async function POST(request: NextRequest) {
     });
 
     // ── 3. Confirmation to client ───────────────────────────────
-    await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL!,
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM,
       to: email,
       subject: `We have received your enquiry — Stratum Juris`,
       html: `

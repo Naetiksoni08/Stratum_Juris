@@ -16,6 +16,11 @@
   --border: #C8CDD8;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

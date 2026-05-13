@@ -130,9 +130,6 @@ export default function PracticeAreaPage({ params }: { params: { id: string } })
                     </div>
                   ))}
                 </div>
-                <p className="font-inter text-sm text-secondary-text mt-5 italic">
-                  Each matter is structured in line with the applicable statutory remedies and procedural requirements.
-                </p>
               </div>
               <div className="border-t border-border" />
             </>

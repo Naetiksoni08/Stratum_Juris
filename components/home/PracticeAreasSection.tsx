@@ -25,7 +25,7 @@ export function PracticeAreasSection() {
           subtitle="Our practice focuses on handling disputes across key areas of civil, criminal and financial law, approached with clarity, structure and strategic intent."
           center
           className="mb-14"
-          />
+        />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {practiceAreas.map((area, index) => {
@@ -40,7 +40,7 @@ export function PracticeAreasSection() {
                   className="card-hover group bg-background border border-border p-8 flex flex-col cursor-pointer h-full rounded-xl"
                 >
                   {/* Icon */}
-                  <div className="w-12 h-12 flex items-center justify-center border border-border group-hover:border-accent-gold/40 mb-6 transition-colors duration-300">
+                  <div className="w-12 h-12 flex items-center justify-center border border-border group-hover:border-[#B8973A] group-hover:bg-[#B8973A]/10 transition-all duration-300 mb-8">
                     <Icon className="w-5 h-5 text-accent-gold" />
                   </div>
 
@@ -54,7 +54,7 @@ export function PracticeAreasSection() {
 
                   {/* Footer */}
                   <div className="flex items-center justify-between pt-4 border-t border-border">
-                    <span className="text-xs font-inter font-medium text-accent-gold tracking-wide flex items-center gap-1.5">
+                    <span className="text-xs font-inter font-medium text-secondary-text group-hover:text-[#B8973A] tracking-wide flex items-center gap-1.5 transition-colors duration-300">
                       Read More
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
                     </span>
@@ -76,14 +76,10 @@ export function PracticeAreasSection() {
           <div className="relative inline-flex">
             <Link
               href="/expertise"
-              className="relative inline-flex items-center gap-2 border border-primary-text/20 text-primary-text px-8 py-3 text-sm font-inter font-medium tracking-wide transition-colors duration-300 hover:bg-primary-text/5 hover:border-primary-text/40 overflow-hidden rounded-lg"
+              className="inline-flex items-center gap-2 border border-[#B8973A] text-[#B8973A] px-8 py-3 text-sm font-inter font-medium tracking-wide transition-all duration-300 hover:bg-[#B8973A] hover:text-white rounded-lg"
             >
               View All Areas of Expertise
               <ArrowRight className="w-4 h-4" />
-              <span className="absolute top-0 left-0 h-px bg-[#E2B96F] animate-border-top" style={{ width: 0 }} />
-              <span className="absolute top-0 right-0 w-px bg-[#E2B96F] animate-border-right" style={{ height: 0 }} />
-              <span className="absolute bottom-0 right-0 h-px bg-[#E2B96F] animate-border-bottom" style={{ width: 0 }} />
-              <span className="absolute bottom-0 left-0 w-px bg-[#E2B96F] animate-border-left" style={{ height: 0 }} />
             </Link>
           </div>
         </motion.div>

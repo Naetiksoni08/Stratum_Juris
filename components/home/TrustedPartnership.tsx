@@ -22,7 +22,7 @@ export function TrustedPartnership() {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[#B8973A] font-inter text-sm tracking-[0.25em] uppercase mb-5"
+          className="text-[#B8973A] font-inter text-sm tracking-[0.25em] uppercase mb-5 font-extrabold"
         >
           Trusted Legal Partnership
         </motion.p>

@@ -3,14 +3,28 @@
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { ContactForm } from "@/components/contact/ContactForm";
+
 const contactInfo = [
   {
     icon: MapPin,
-    title: "Office Address",
-    lines: [
-      "A-3/87, Office No. 101, Garg Complex",
-      "Block J, Guru Nanak Pura, Laxmi Nagar",
-      "Delhi – 110092",
+    title: "Office Addresses",
+    addresses: [
+      {
+        label: "Head Office",
+        lines: [
+          "A-3/87, Office No. 101, Garg Complex",
+          "Block J, Guru Nanak Pura, Laxmi Nagar,",
+          "Delhi – 110092",
+        ],
+      },
+      {
+        label: "Branch Office",
+        lines: [
+          "103-A, Anant Vihar Apartment,",
+          "1, Lohiya Marg, Civil Lines,",
+          "Prayagraj, UP – 211001",
+        ],
+      },
     ],
   },
   {
@@ -28,9 +42,7 @@ const contactInfo = [
   {
     icon: Clock,
     title: "Office Hours",
-    lines: [
-      "Monday – Saturday: 10:00 AM – 8:00 PM",
-    ],
+    lines: ["Monday – Saturday: 10:00 AM – 8:00 PM"],
   },
 ];
 
@@ -45,7 +57,6 @@ export function ContactContent() {
         className="py-20 lg:py-28 relative bg-cover bg-no-repeat"
         style={{ backgroundImage: "url('/contact.png')", backgroundPosition: "70% center" }}
       >
-        {/* Dark overlay — heavier on left so text is readable */}
         <div
           className="absolute inset-0"
           style={{ background: "linear-gradient(to right, rgba(10,22,40,0.65) 45%, rgba(10,22,40,0.20))" }}
@@ -84,7 +95,9 @@ export function ContactContent() {
       {/* Main Content */}
       <section className="py-20 lg:py-28 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Added items-start to prevent children from stretching vertically */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+
             {/* Left: Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -97,7 +110,7 @@ export function ContactContent() {
               </h2>
               <div className="gold-divider mb-8" />
 
-              <div className="space-y-7 mb-10">
+              <div className="space-y-10 mb-10">
                 {contactInfo.map((info, index) => {
                   const Icon = info.icon;
                   return (
@@ -109,29 +122,47 @@ export function ContactContent() {
                       transition={{ delay: index * 0.08 }}
                       className="flex items-start gap-4"
                     >
-                      <div className="w-10 h-10 border border-border flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 border border-border flex items-center justify-center flex-shrink-0 mt-1">
                         <Icon className="w-4 h-4 text-accent-gold" />
                       </div>
-                      <div>
-                        <p className="font-inter text-xs font-semibold text-secondary-text tracking-wide uppercase mb-1.5">
+                      <div className="flex-1">
+                        <p className="font-inter text-xs font-semibold text-secondary-text tracking-wide uppercase mb-3">
                           {info.title}
                         </p>
-                        {info.lines.map((line, i) =>
-                          info.href ? (
-                            <a
-                              key={i}
-                              href={info.href}
-                              target={info.href.startsWith("http") ? "_blank" : undefined}
-                              rel="noopener noreferrer"
-                              className="block font-inter text-sm text-primary-text hover:text-accent-gold transition-colors duration-200"
-                            >
-                              {line}
-                            </a>
-                          ) : (
-                            <p key={i} className="font-inter text-sm text-primary-text">
-                              {line}
-                            </p>
-                          )
+
+                        {info.addresses ? (
+                          <div className="flex flex-col gap-6">
+                            {info.addresses.map((addr, i) => (
+                              <div key={i}>
+                                <p className="text-[10px] text-accent-gold uppercase font-bold mb-1 tracking-wider">
+                                  {addr.label}
+                                </p>
+                                {addr.lines.map((line, li) => (
+                                  <p key={li} className="font-inter text-sm text-primary-text leading-relaxed">
+                                    {line}
+                                  </p>
+                                ))}
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="space-y-1">
+                            {info.lines?.map((line, i) =>
+                              info.href ? (
+                                <a
+                                  key={i}
+                                  href={info.href}
+                                  className="block font-inter text-sm text-primary-text hover:text-accent-gold transition-colors duration-200"
+                                >
+                                  {line}
+                                </a>
+                              ) : (
+                                <p key={i} className="font-inter text-sm text-primary-text">
+                                  {line}
+                                </p>
+                              )
+                            )}
+                          </div>
                         )}
                       </div>
                     </motion.div>
@@ -156,7 +187,7 @@ export function ContactContent() {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Jiya & Associates Office Location"
+                    title="Office Location"
                   />
                   <a
                     href={MAPS_OPEN_URL}
@@ -171,13 +202,13 @@ export function ContactContent() {
               </motion.div>
             </motion.div>
 
-            {/* Right: Form */}
+            {/* Right: Form - Added h-fit to prevent it from growing */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="bg-secondary/30 p-8 lg:p-10 border border-border"
+              className="bg-secondary/30 p-8 lg:p-10 border border-border h-fit"
             >
               <h2 className="font-cormorant text-3xl font-semibold text-primary-text mb-2">
                 Send an Inquiry
@@ -188,7 +219,6 @@ export function ContactContent() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

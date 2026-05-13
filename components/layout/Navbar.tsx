@@ -54,13 +54,19 @@ export function Navbar() {
         <nav className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center group">
-            <Image src="/logo.png" alt="Stratum Juris Logo" width={120} height={120} className="flex-shrink-0 rounded-lg mt-3 -mr-4" />
-              <div className="flex flex-col leading-none">
-                <span className="font-cormorant text-xl lg:text-3xl font-bold text-[#B8973A] tracking-tight transition-colors duration-300">
+            <Link href="/" className="flex items-center group min-w-0 flex-1 mb-3">
+              <Image
+                src="/logo.png"
+                alt="Stratum Juris Logo"
+                width={55}
+                height={55}
+                className="flex-shrink-0 lg:w-[70px] lg:h-[70px] -mr-1 mt-3 lg:mt-4"
+              />
+              <div className="flex flex-col leading-none ml-2 mt-2 lg:mt-3 items-center lg:items-start">
+                <span className="font-cormorant text-base text-[22px] lg:text-3xl font-bold text-[#B8973A] tracking-tight transition-colors duration-300">
                   STRATUM JURIS
                 </span>
-                <span className="text-[9px] tracking-[0.25em] text-[#B8973A] uppercase font-inter font-extrabold">
+                <span className="text-[9px] lg:text-[9px] tracking-[0.2em] lg:tracking-[0.25em] text-[#B8973A] uppercase font-inter font-extrabold mt-0.5">
                   Advocates & Solicitors
                 </span>
               </div>
@@ -108,7 +114,7 @@ export function Navbar() {
             {/* Mobile hamburger */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 text-primary-text hover:text-accent-gold transition-colors"
+              className="lg:hidden p-2 text-[#B8973A] hover:text-[#D4A853] transition-colors flex-shrink-0 ml-2"
               aria-label="Toggle menu"
             >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -128,18 +134,25 @@ export function Navbar() {
             className="fixed inset-0 z-30 bg-background flex flex-col"
           >
             <div className="flex flex-col items-center justify-center h-full gap-8">
+              {/* Updated Logo/Brand Row for Mobile Overlay */}
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="flex flex-col items-center mb-6 gap-3"
+                className="flex flex-row items-center mb-6"
               >
-              <Image src="/logo.png" alt="Stratum Juris Logo" width={120} height={120} />
-                <div className="text-center">
-                  <span className="font-cormorant text-3xl font-bold text-accent-gold">
+                <Image
+                  src="/logo.png"
+                  alt="Stratum Juris Logo"
+                  width={70}
+                  height={70}
+                  className="flex-shrink-0 -mr-3"
+                />
+                <div className="flex flex-col text-left leading-tigh ml-4">
+                  <span className="font-cormorant text-2xl font-bold text-[#B8973A] tracking-tight">
                     STRATUM JURIS
                   </span>
-                  <p className="text-[10px] tracking-[0.25em] text-accent-gold uppercase font-inter mt-1">
+                  <p className="text-[10px] tracking-[0.25em] text-[#B8973A] uppercase font-inter font-bold mt-0.5">
                     Advocates & Solicitors
                   </p>
                 </div>
@@ -158,8 +171,8 @@ export function Navbar() {
                     className={cn(
                       "font-cormorant text-3xl font-semibold transition-colors duration-200",
                       pathname === item.href
-                        ? "text-primary-text"
-                        : "text-primary-text hover:text-accent-gold"
+                        ? "text-[#B8973A]"
+                        : "text-primary-text hover:text-[#B8973A]"
                     )}
                   >
                     {item.label}
@@ -175,7 +188,7 @@ export function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => setMobileOpen(false)}
-                  className="mt-4 px-8 py-3 border border-primary-text text-primary-text rounded-lg font-inter text-sm tracking-widest uppercase hover:bg-[#B8973A] hover:border-[#B8973A] hover:text-white transition-all duration-300"
+                  className="mt-4 px-8 py-3 border border-[#B8973A] text-[#B8973A] rounded-lg font-inter text-sm tracking-widest uppercase hover:bg-[#B8973A] hover:text-white transition-all duration-300"
                 >
                   Contact Us
                 </Link>

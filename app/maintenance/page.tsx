@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 export default function MaintenancePage() {
   return (
@@ -19,16 +20,17 @@ export default function MaintenancePage() {
       <div className="relative text-center max-w-md">
 
         {/* Logo box */}
-        <div
-          className="w-14 h-14 mx-auto mb-8 flex items-center justify-center rounded-xl"
-          style={{ border: "1px solid #B8973A55", background: "rgba(184,151,58,0.1)" }}
-        >
-          <span className="font-cormorant text-2xl font-bold" style={{ color: "#B8973A" }}>S</span>
-        </div>
+        <Image
+          src="/maintenance.png"
+          alt="Stratum Juris"
+          width={65}
+          height={65}
+          className="mx-auto mb-6 rounded-xl"
+        />
 
         {/* Eyebrow */}
         <p className="font-cormorant text-3xl font-semibold tracking-wide mb-5" style={{ color: "#B8973A" }}>
-        STRATUM JURIS
+          STRATUM JURIS
         </p>
 
         {/* Heading */}

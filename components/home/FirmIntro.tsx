@@ -4,7 +4,6 @@ import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { useRef } from "react";
 
-// Expo ease-out — matches GSAP's Power4.easeOut feel
 const EXPO_OUT = [0.16, 1, 0.3, 1] as const;
 
 const container = {
@@ -47,7 +46,7 @@ export function FirmIntro() {
           variants={container}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          className="grid lg:grid-cols-[2fr_3fr] gap-16 lg:gap-24 items-start"
+          className="grid lg:grid-cols-[2fr_3fr] gap-5 lg:gap-24 items-start"
         >
           {/* Left — sticky heading block */}
           <div className="lg:sticky lg:top-32">
@@ -69,7 +68,8 @@ export function FirmIntro() {
               className="gold-divider mb-8 origin-left"
             />
 
-            <motion.div variants={fadeUp}>
+            {/* Desktop only button */}
+            <motion.div variants={fadeUp} className="hidden lg:block">
               <div className="relative inline-flex">
                 <Link
                   href="/about"
@@ -99,10 +99,20 @@ export function FirmIntro() {
             <motion.p variants={fadeUp} className="text-secondary-text font-inter text-base leading-relaxed">
               Consistency in position is maintained across all stages — pleadings, arguments and appellate remedies — ensuring the case develops with coherence and discipline rather than fragmentation.
             </motion.p>
+
+            {/* Mobile only button */}
+            <motion.div variants={fadeUp} className="lg:hidden pt-2 flex justify-center">
+              <Link
+                href="/about"
+                className="inline-flex items-center justify-center gap-2 border border-primary-text/20 text-primary-text px-8 py-3 text-sm font-inter font-medium tracking-wide transition-colors duration-300 hover:bg-primary-text/5 hover:border-primary-text/40 rounded-lg"
+              >
+                Learn More About Us
+              </Link>
+            </motion.div>
           </div>
+
         </motion.div>
       </div>
-
     </section>
   );
 }

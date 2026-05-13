@@ -70,7 +70,7 @@ export function TeamContent() {
               >
                 <Link
                   href={`/team/${founder.id}`}
-                  className="group flex flex-col sm:flex-row gap-0 border border-border cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all duration-300 block"
+                  className="group flex flex-col sm:flex-row gap-0 border border-border cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all duration-300 block bg-[#F4F1EC]"
                 >
                   {/* Image */}
                   <div className="relative w-full sm:w-[300px] lg:w-[380px] flex-shrink-0" style={{ aspectRatio: "1/1.2", backgroundColor: "#E8E2D9" }}>

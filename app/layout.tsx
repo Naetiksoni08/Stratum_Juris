@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Stratum Juris",
   },
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon.ico",
   },
   description:
     "Stratum Juris is a premier litigation and dispute resolution firm. Specialising in civil litigation, commercial disputes, arbitration, corporate litigation, consumer law, and criminal defence.",
@@ -140,7 +140,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-background text-primary-text antialiased">
+      <body className="bg-background text-primary-text antialiased overflow-x-hidden">
         <ConditionalLayout>{children}</ConditionalLayout>
       </body>
     </html>

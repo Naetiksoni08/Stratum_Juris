@@ -23,7 +23,7 @@ const DeletedLeadSchema = new Schema<IDeletedLead>({
   source: String,
   tags: [String],
   starred: Boolean,
-  notes: { type: Array, default: [] },
+  notes: { type: [{ content: String, createdAt: Date }], default: [] },
   deletedAt: { type: Date, default: Date.now },
   originalCreatedAt: Date,
 });

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { Hero } from "@/components/home/Hero";
 import { FirmIntro } from "@/components/home/FirmIntro";
 import { PracticeAreasSection } from "@/components/home/PracticeAreasSection";
@@ -14,6 +15,10 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  if (process.env.MAINTENANCE_MODE === "true") {
+    redirect("/maintenance");
+  }
+
   return (
     <>
       <Hero />

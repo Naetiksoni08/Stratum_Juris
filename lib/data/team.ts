@@ -28,7 +28,7 @@ export const teamMembers: TeamMember[] = [
     sections: [
       {
         title: "Focus Areas",
-        label:"Key Practice",
+        label: "Key Practice",
         content:
           "Commercial Recovery & Enforcement\nRecovery actions, execution of decrees and enforcement strategy. Focused on realisation and outcome-driven litigation.\n\nCorporate & Shareholder Litigation\nShareholder disputes, governance breakdowns and commercial conflicts. Includes oppression, mismanagement and corporate disputes.\n\nPMLA & Economic Offences\nMoney laundering proceedings, attachment and adjudication. Strategy for bail, defence and financial exposure.\n\nCBI & Criminal Prosecution\nInvestigation-stage defence and trial strategy. Handling FIRs, charge-sheets and discharge proceedings.\n\nNegotiable Instruments Litigation\nCheque dishonour cases and enforcement proceedings. Handled from initiation to recovery.\n\nNCLT / NCLAT Practice\nInsolvency and restructuring under the IBC framework. Creditor-debtor disputes and tribunal litigation.\n\nDRT / DRAT Proceedings\nBanking disputes, debt recovery and secured asset enforcement. Handling matters across tribunal and appellate stages.\n\nMatrimonial & Family Proceedings\nDivorce, custody and maintenance disputes. Balanced handling with focus on legal position and outcome.\n\nRegulatory & Compliance Disputes\nStatutory exposure and multi-agency matters. Aligned with financial and operational considerations.\n\nMulti-Forum Litigation Strategy\nCoordinated proceedings across courts and tribunals. Focused on consistency, timing and control.",
       },
@@ -101,11 +101,13 @@ export const teamMembers: TeamMember[] = [
     sections: [
       {
         title: "Advisory Focus",
+        label: "Expertise",
         content:
           "His experience reflects long-term engagement with regulatory systems and financial frameworks, including legacy matters carrying sustained exposure and multi-layered implications. His perspective is grounded in continuity, risk assessment and measured resolution, particularly in situations requiring stability and discretion.",
       },
       {
         title: "Role at the Firm",
+        label:"Strategy And Impact",
         content:
           "Ravi acts as a senior strategic resource in matters requiring regulatory depth and commercial insight, ensuring that dispute strategy remains aligned with broader financial, tax and business considerations.",
       },
@@ -124,11 +126,13 @@ export const teamMembers: TeamMember[] = [
     sections: [
       {
         title: "Criminal Practice Focus",
+        label: "Expertise",
         content:
           "His work is concentrated on core areas of criminal litigation, including bail strategy, quashing of proceedings, discharge and trial defence. He is regularly involved in matters requiring immediate intervention, where timing, preparation and clarity of legal position are critical.\n\nHis approach is grounded in early assessment of exposure, structured defence positioning and disciplined execution across stages of proceedings, ensuring that the client's position is clearly articulated and effectively advanced.",
       },
       {
         title: "Role at the Firm",
+        label:"Strategy And Impact",
         content:
           "Raagansh forms part of the litigation team at Stratum Juris, with a dedicated focus on criminal defence. His role involves drafting, case analysis, briefing and court appearances, supporting the firm's approach of structured litigation and consistent execution.",
       },
@@ -146,12 +150,14 @@ export const teamMembers: TeamMember[] = [
     bio: "Himanshu Jaiswal is a litigation practitioner with focused experience in white-collar criminal defence, economic offences and agency-driven investigations. His practice is centred on handling complex criminal proceedings involving financial irregularities, regulatory exposure and prosecution initiated by specialised investigative agencies, with regular appearances before the Hon’ble Supreme Court of India, the Allahabad High Court and trial courts across Uttar Pradesh.\n\nHis work includes matters involving allegations of financial fraud, cheating, criminal breach of trust, cyber offences and corporate misconduct, along with proceedings arising under special statutes and regulatory frameworks. He has been actively involved in matters concerning investigations conducted by agencies such as the Enforcement Directorate, Central Bureau of Investigation and Economic Offences Wing, contributing to defence strategy, procedural challenges, anticipatory reliefs, bail proceedings and courtroom representation.\n\nAt Stratum Juris, Himanshu is engaged in handling white-collar criminal matters requiring strategic defence planning, procedural precision and coordinated litigation strategy, particularly in cases involving financial exposure, parallel proceedings and high-stakes investigation frameworks.",
     sections: [
       {
-        title: "WHITE-COLLAR PRACTICE FOCUS",
+        title: "White-Collar Practice Focus",
+        label:"Expertise",
         content:
           "His practice is concentrated on white-collar criminal litigation, with significant involvement in matters relating to economic offences, agency investigations and financial crime defence. He regularly handles proceedings involving bail, investigation-stage intervention, trial strategy and procedural challenges in matters carrying substantial reputational and regulatory implications.\n\nHe has also worked extensively on cases involving multi-agency investigations and complex factual matrices, requiring coordinated defence strategy, detailed document analysis and careful management of proceedings across criminal courts, investigative authorities and allied forums.",
       },
       {
         title: "Role at the Firm",
+        label:"Strategy And Impact",
         content:
           "Himanshu serves as a Senior Associate – White-Collar Crimes at Stratum Juris, contributing to investigation strategy, criminal defence structuring, drafting and courtroom representation in complex economic offence matters. His role involves supporting the firm’s white-collar defence practice through focused handling of agency-driven proceedings, ensuring strategic consistency and effective execution at every stage of litigation.",
       },

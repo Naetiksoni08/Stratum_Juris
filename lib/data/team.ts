@@ -28,6 +28,7 @@ export const teamMembers: TeamMember[] = [
     sections: [
       {
         title: "Focus Areas",
+        label:"Key Practice",
         content:
           "Commercial Recovery & Enforcement\nRecovery actions, execution of decrees and enforcement strategy. Focused on realisation and outcome-driven litigation.\n\nCorporate & Shareholder Litigation\nShareholder disputes, governance breakdowns and commercial conflicts. Includes oppression, mismanagement and corporate disputes.\n\nPMLA & Economic Offences\nMoney laundering proceedings, attachment and adjudication. Strategy for bail, defence and financial exposure.\n\nCBI & Criminal Prosecution\nInvestigation-stage defence and trial strategy. Handling FIRs, charge-sheets and discharge proceedings.\n\nNegotiable Instruments Litigation\nCheque dishonour cases and enforcement proceedings. Handled from initiation to recovery.\n\nNCLT / NCLAT Practice\nInsolvency and restructuring under the IBC framework. Creditor-debtor disputes and tribunal litigation.\n\nDRT / DRAT Proceedings\nBanking disputes, debt recovery and secured asset enforcement. Handling matters across tribunal and appellate stages.\n\nMatrimonial & Family Proceedings\nDivorce, custody and maintenance disputes. Balanced handling with focus on legal position and outcome.\n\nRegulatory & Compliance Disputes\nStatutory exposure and multi-agency matters. Aligned with financial and operational considerations.\n\nMulti-Forum Litigation Strategy\nCoordinated proceedings across courts and tribunals. Focused on consistency, timing and control.",
       },

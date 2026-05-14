@@ -108,7 +108,7 @@ export default function TeamMemberPage({ params }: { params: { id: string } }) {
                 className="font-inter text-xs font-semibold tracking-[0.2em] uppercase mb-3"
                 style={{ color: "#B8973A" }}
               >
-                {section.title}
+               {section.label ?? section.title} 
               </p>
               <h2 className="font-cormorant text-3xl lg:text-4xl font-semibold text-primary-text mb-6">
                 {section.title}

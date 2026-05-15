@@ -10,8 +10,11 @@ import { TrustedPartnership } from "@/components/home/TrustedPartnership";
 
 export const metadata: Metadata = {
   title: "Stratum Juris | Litigation & Strategic Disputes",
-  description:
-    "Stratum Juris — a disputes-focused litigation law firm handling criminal, commercial, regulatory and white-collar proceedings with strategic courtroom representation across courts and tribunals.",
+  description: "Stratum Juris — a disputes-focused litigation law firm handling criminal, commercial, regulatory and white-collar proceedings with strategic courtroom representation across courts and tribunals.",
+  openGraph: {
+    title: "Stratum Juris | Litigation & Strategic Disputes",
+    description: "Stratum Juris — a disputes-focused litigation law firm handling criminal, commercial, regulatory and white-collar proceedings with strategic courtroom representation across courts and tribunals.",
+  },
 };
 
 export default function HomePage() {

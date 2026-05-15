@@ -9,9 +9,9 @@ import { CTABanner } from "@/components/home/CTABanner";
 import { TrustedPartnership } from "@/components/home/TrustedPartnership";
 
 export const metadata: Metadata = {
-  title: "Stratum Juris | Strategic Legal Counsel",
+  title: "Stratum Juris | Litigation & Strategic Disputes",
   description:
-    "Stratum Juris — a premier litigation and dispute resolution firm. Strategic, results-oriented legal representation across India's courts and arbitral tribunals.",
+    "Stratum Juris — a disputes-focused litigation law firm handling criminal, commercial, regulatory and white-collar proceedings with strategic courtroom representation across courts and tribunals.",
 };
 
 export default function HomePage() {

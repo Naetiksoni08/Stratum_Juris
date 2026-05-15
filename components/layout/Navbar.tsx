@@ -62,8 +62,8 @@ export function Navbar() {
                 height={55}
                 className="flex-shrink-0 lg:w-[70px] lg:h-[70px] -mr-1 mt-3 lg:mt-4"
               />
-              <div className="flex flex-col leading-none ml-2 mt-2 lg:mt-3 items-center lg:items-start">
-                <span className="font-cormorant text-base text-[22px] lg:text-3xl font-bold text-[#B8973A] tracking-tight transition-colors duration-300">
+              <div className="flex flex-col leading-none ml-2 mt-2 lg:mt-3 items-start">
+                <span className="font-cormorant text-base text-[23px] lg:text-3xl font-bold text-[#B8973A] tracking-tight transition-colors duration-300">
                   STRATUM JURIS
                 </span>
                 <span className="text-[9px] lg:text-[9px] tracking-[0.2em] lg:tracking-[0.25em] text-[#B8973A] uppercase font-inter font-extrabold mt-0.5">

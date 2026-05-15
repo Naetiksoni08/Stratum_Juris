@@ -22,7 +22,7 @@ export function Hero() {
         transition={{ duration: 1.5, delay: 0.5 }}
       />
 
-<div className="relative z-10 w-full px-6 sm:px-16 lg:px-28 py-32 flex justify-center sm:justify-start">
+      <div className="relative z-10 w-full px-6 sm:px-16 lg:px-28 py-32 flex justify-center sm:justify-start">
         <div className="max-w-2xl text-center sm:text-left">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -31,7 +31,9 @@ export function Hero() {
             className="font-cormorant text-5xl md:text-6xl lg:text-7xl font-semibold text-white leading-[1.1] mb-6"
           >
             CLARITY IN STRATEGY.{" "}
-            <span className="text-accent-gold italic">STRENGTH</span>
+            <span className="text-accent-gold italic" style={{ textShadow: "0 2px 8px rgba(0,0,0,0.8)" }}>
+              STRENGTH
+            </span>
             <br />
             IN EXECUTION.
           </motion.h1>
